@@ -1,12 +1,519 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crystal Media Foundation</title>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤسسة كريستال الإعلامية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        .pattern-dots {
+            background-image: radial-gradient(circle, #FFD700 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .dark-mode .dark\:bg-gray-900 { background-color: #111827; }
+        .dark-mode .dark\:bg-gray-800 { background-color: #1f2937; }
+        .dark-mode .dark\:text-white { color: white; }
+        .dark-mode .dark\:text-gray-300 { color: #d1d5db; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-black/95 backdrop-blur-sm z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZEMjAwO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkE1MDA7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIAogICAgPCEtLSBEaWFtb25kIFNoYXBlIC0tPgogICAgPHBhdGggZD0iTTMwIDVMNTUgMzBMMzAgNTVMNSAzMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwQzBDMCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICAKICAgIDwhLS0gSW5uZXIgRGlhbW9uZCAtLT4KICAgIDxwYXRoIGQ9Ik0zMCAxNUw0NSAzMEwzMCA0NUwxNSAzMHoiIGZpbGw9InVybCgjZ29sZEdyYWQpIi8+CiAgICAKICAgIDwhLS0gQ3Jvd24gLS0+CiAgICA8cGF0aCBkPSJNMjAgNWwtMiA2aDI0bC0yLTZsLTMgM2wtMy0zbC0zIDNsLTMtM2wtMyAzbC0zLTN6IiBmaWxsPSJ1cmwoI2dvbGRHcmFkKSIvPgogICAgCiAgICA8IS0tIENhbWVyYSBJY29uIC0tPgogICAgPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNiIgZmlsbD0iIzJBMkEyQSIvPgogICAgPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZEMjAwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPGNpcmNsZSBjeD0iMzQiIGN5PSIyNiIgcj0iMSIgZmlsbD0iI0ZGRDIwMCIvPgo8L3N2Zz4=" alt="Crystal Media" class="h-12 w-12">
+                    <span class="mr-2 text-yellow-400 text-xl font-bold">كريستال الإعلامية</span>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 space-x-reverse">
+                    <a href="#home" class="text-gray-300 hover:text-yellow-400 transition">الرئيسية</a>
+                    <a href="#about" class="text-gray-300 hover:text-yellow-400 transition">من نحن</a>
+                    <a href="#programs" class="text-gray-300 hover:text-yellow-400 transition">البرامج</a>
+                    <a href="#partnerships" class="text-gray-300 hover:text-yellow-400 transition">الشراكات</a>
+                    <a href="#impact" class="text-gray-300 hover:text-yellow-400 transition">الأثر</a>
+                    <a href="#team" class="text-gray-300 hover:text-yellow-400 transition">الفريق</a>
+                    <a href="#contact" class="text-gray-300 hover:text-yellow-400 transition">تواصل معنا</a>
+                </nav>
+                
+                <!-- Language & Theme Toggle -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button onclick="toggleLanguage()" class="bg-gray-800 hover:bg-gray-700 text-yellow-400 px-3 py-1 rounded">
+                        EN
+                    </button>
+                    <button onclick="toggleTheme()" class="bg-gray-800 hover:bg-gray-700 text-yellow-400 p-2 rounded">
+                        🌙
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen hero-gradient flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 pattern-dots"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="animate-float mb-8">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRDcwMDtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZBNTAwO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgICAgPGZpbHRlciBpZD0iZ2xvdyI+CiAgICAgICAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iY29sb3JlZEJsdXIiLz4KICAgICAgICAgICAgPGZlTWVyZ2U+CiAgICAgICAgICAgICAgICA8ZmVNZXJnZU5vZGUgaW49ImNvbG9yZWRCbHVyIi8+CiAgICAgICAgICAgICAgICA8ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz4KICAgICAgICAgICAgPC9mZU1lcmdlPgogICAgICAgIDwvZmlsdGVyPgogICAgPC9kZWZzPgogICAgCiAgICA8IS0tIERpYW1vbmQgU2hhcGUgLS0+CiAgICA8cGF0aCBkPSJNNzUgMTVMMTM1IDc1TDc1IDEzNUwxNSA3NXoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwQzBDMCIgc3Ryb2tlLXdpZHRoPSI0IiBmaWx0ZXI9InVybCgjZ2xvdykiLz4KICAgIAogICAgPCEtLSBJbm5lciBEaWFtb25kIC0tPgogICAgPHBhdGggZD0iTTc1IDM1TDExNSA3NUw3NSAxMTVMMzUgNzV6IiBmaWxsPSJ1cmwoI2dvbGRHcmFkKSIgb3BhY2l0eT0iMC45Ii8+CiAgICAKICAgIDwhLS0gQ3Jvd24gLS0+CiAgICA8cGF0aCBkPSJNNTAgMTVsLTQgMTJoNThsLTQtMTJsLTcgN2wtNy03bC03IDdsLTctN2wtNyA3bC03LTd6IiBmaWxsPSJ1cmwoI2dvbGRHcmFkKSIgZmlsdGVyPSJ1cmwoI2dsb3cpIi8+CiAgICAKICAgIDwhLS0gQ2FtZXJhIEljb24gLS0+CiAgICA8Y2lyY2xlIGN4PSI3NSIgY3k9Ijc1IiByPSIxNSIgZmlsbD0iIzJBMkEyQSIvPgogICAgPGNpcmNsZSBjeD0iNzUiIGN5PSI3NSIgcj0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRDcwMCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8Y2lyY2xlIGN4PSI4NSIgY3k9IjY1IiByPSIzIiBmaWxsPSIjRkZENzAwIi8+Cjwvc3ZnPg==" alt="Crystal Media Logo" class="mx-auto h-36 w-36">
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+                مؤسسة <span class="text-gradient">كريستال</span> الإعلامية
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                منصة إعلامية مجتمعية مستقلة تسعى لتأهيل الصحفيين الشباب وإيصال صوت المدنيين
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#about" class="gold-gradient text-black px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition">
+                    اكتشف المزيد
+                </a>
+                <a href="#contact" class="border-2 border-yellow-400 text-yellow-400 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition">
+                    تواصل معنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">1500+</div>
+                    <div class="text-gray-400">متدرب</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">20+</div>
+                    <div class="text-gray-400">مبادرة مجتمعية</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">12</div>
+                    <div class="text-gray-400">شراكة فعالة</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">4+</div>
+                    <div class="text-gray-400">محافظة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">نبذة عن المؤسسة</h2>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-700 mb-6">
+                        في أقل من خمس سنوات، انطلقت مؤسسة كريستال الإعلامية بقيادة الصحفية رنا توتونجي (رنا الحلبي سابقًا) من خمس مبادرات شبابية عام 2020 لتصبح شبكة تضم نحو 50 متطوعًا وفريقًا أساسيًا من 10 كوادر.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        بدأت المؤسسة كمبادرة إعلامية محلية وسرعان ما تحوّلت بعد المرحلة التحريرية التأسيسية إلى لعب دور قيادي أوسع في مجال الإعلام المجتمعي والتدريب المدني.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        تعمل كريستال اليوم عبر معظم المحافظات السورية، في المدن والأرياف، وتضع نصب عينيها رسالة "تأهيل الصحفيين الشباب وإيصال صوت المدنيين".
+                    </p>
+                </div>
+                <div class="bg-black rounded-2xl p-8 card-hover">
+                    <div class="bg-gray-900 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-4">رؤيتنا</h3>
+                        <p class="text-gray-300 mb-6">فضاء إعلامي حرّ ينهض بالمجتمع السوري ويعزّز مشاركته</p>
+                        
+                        <h3 class="text-2xl font-bold text-yellow-400 mb-4">رسالتنا</h3>
+                        <p class="text-gray-300">تدريب الجيل الإعلامي الجديد، توثيق قصص الناس، والمساهمة ميدانيًا في تحسين الخدمات المحليّة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">البرامج والمبادرات</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-yellow-600"></div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold text-yellow-600 bg-yellow-100 rounded-full mb-3">
+                            برامج مجتمعية
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">مسابقات رمضان</h3>
+                        <p class="text-gray-600 mb-4">برنامج تفاعلي شارك فيه حوالي 150 عائلة لتعزيز الروابط الاجتماعية والثقافية</p>
+                        <button class="text-yellow-600 font-semibold hover:text-yellow-700">
+                            اقرأ المزيد ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold text-gray-600 bg-gray-200 rounded-full mb-3">
+                            برامج حوارية
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">ملامح من المجتمع السوري</h3>
+                        <p class="text-gray-600 mb-4">برنامج حواري يناقش التحديات المجتمعية ويفتح حوارًا بناءً مع المسؤولين</p>
+                        <button class="text-yellow-600 font-semibold hover:text-yellow-700">
+                            اقرأ المزيد ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500"></div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold text-orange-600 bg-orange-100 rounded-full mb-3">
+                            تقارير ثقافية
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">ناس البلد</h3>
+                        <p class="text-gray-600 mb-4">سلسلة تقارير ثقافية وإنسانية تحقق متوسط 15 ألف مشاهدة للحلقة</p>
+                        <button class="text-yellow-600 font-semibold hover:text-yellow-700">
+                            اقرأ المزيد ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-700"></div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold text-green-600 bg-green-100 rounded-full mb-3">
+                            برامج توعوية
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">السلامة المرورية</h3>
+                        <p class="text-gray-600 mb-4">محتوى توعوي بالتعاون مع جمعية الحضارة لتعزيز الوعي بالسلامة المرورية</p>
+                        <button class="text-yellow-600 font-semibold hover:text-yellow-700">
+                            اقرأ المزيد ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Program 5 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-700"></div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold text-purple-600 bg-purple-100 rounded-full mb-3">
+                            برامج تدريبية
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">ورشات من أجل السلام</h3>
+                        <p class="text-gray-600 mb-4">مكّنت 40 امرأة وفتاة بالمعارف في الأمن الرقمي والتصوير والتحرير</p>
+                        <button class="text-yellow-600 font-semibold hover:text-yellow-700">
+                            اقرأ المزيد ←
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Program 6 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-700"></div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold text-red-600 bg-red-100 rounded-full mb-3">
+                            مبادرات خدمية
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">رجعنا يا شام</h3>
+                        <p class="text-gray-600 mb-4">حملة تطوعية لإعادة تأهيل 11 ساحة وحديقة بمشاركة 1300 متطوع</p>
+                        <button class="text-yellow-600 font-semibold hover:text-yellow-700">
+                            اقرأ المزيد ←
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section id="partnerships" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">شركاؤنا</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">الدفاع المدني السوري</h4>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">رايزوم - كندا/سوريا</h4>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">أكاديمية نيو روز</h4>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">منظمة بنفسج</h4>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">مجلة صور</h4>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">فريق أنامل بيضاء</h4>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">فريق ميني TV</h4>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h4 class="text-center font-bold text-gray-800">مجلس مدينة حلب</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="py-20 bg-black text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-yellow-400">أثرنا المجتمعي</h2>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-4">التدريب وبناء القدرات</h3>
+                    <p class="text-gray-300">أكثر من 1500 شخص حصلوا على تدريب متخصص عبر برامج كريستال، مما نتج عنه تخريج العشرات من الصحفيين الجدد القادرين على إنتاج محتوى مهني.</p>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-4">المبادرات والمشاريع</h3>
+                    <p class="text-gray-300">تنفيذ ما يزيد عن 20 مبادرة مجتمعية وخدمية مباشرة، بمعدل 2-3 مشاريع شهريًا، توزعت على معظم المحافظات السورية.</p>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-4">الوصول الإعلامي</h3>
+                    <p class="text-gray-300">تجاوز المحتوى الإجمالي للمؤسسة حاجز 100 ألف مشاهدة، مع انتشار بعض الفيديوهات بشكل فيروسي تجاوز 20 ألف مشاهدة خلال أيام.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">فريقنا</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-lg p-8 text-center">
+                    <div class="w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full mx-auto mb-6"></div>
+                    <h3 class="text-2xl font-bold mb-2">رنا توتونجي</h3>
+                    <p class="text-yellow-600 font-semibold mb-4">مؤسسة ورئيسة مجلس الإدارة</p>
+                    <p class="text-gray-700 max-w-2xl mx-auto">
+                        صحفية سورية شابة متمرسة، تتمتع بخبرة تتجاوز عشر سنوات في مجال الإعلام الميداني والإدارة الصحفية. 
+                        أسست المؤسسة عام 2020 واضعة رؤيتها وطموحها موضع التنفيذ. عملت سابقًا في مواقع قيادية في وكالات 
+                        وشبكات إخبارية سورية، من رئاسة التحرير في شبكة يقين إلى إدارة التدريب في وكالة "أخبار الحدث".
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                        <h4 class="font-bold">مدير البرامج</h4>
+                        <p class="text-gray-600">وحدة الإنتاج الإعلامي</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                        <h4 class="font-bold">مدير التدريب</h4>
+                        <p class="text-gray-600">وحدة التدريب وبناء القدرات</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                        <h4 class="font-bold">المدير المالي</h4>
+                        <p class="text-gray-600">الحوكمة والشفافية المالية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funding Section -->
+    <section id="funding" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">التمويل والاستدامة</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold mb-6">نموذج التمويل المختلط</h3>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="text-3xl mb-2">📄</div>
+                            <h4 class="font-bold mb-2">عقود الإنتاج</h4>
+                            <p class="text-sm text-gray-600">خدمات إنتاج إعلامي للشركاء</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="text-3xl mb-2">💰</div>
+                            <h4 class="font-bold mb-2">المنح والمشاريع</h4>
+                            <p class="text-sm text-gray-600">منح صغيرة ومتوسطة للإعلام الحر</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="text-3xl mb-2">❤️</div>
+                            <h4 class="font-bold mb-2">التبرعات الجماهيرية</h4>
+                            <p class="text-sm text-gray-600">دعم شهري عبر منصة Patreon</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        تلتزم المؤسسة بأعلى معايير الشفافية المالية، حيث تُنشر تقارير دورية مختصرة عن أوجه الإنفاق والموارد، 
+                        مما عزز ثقة المانحين والجمهور بها.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-yellow-400">تواصل معنا</h2>
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Contact Form -->
+                <div class="bg-gray-900 rounded-lg p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">أرسل رسالتك</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">الاسم</label>
+                            <input type="text" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">البريد الإلكتروني</label>
+                            <input type="email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">الموضوع</label>
+                            <input type="text" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-300 mb-2">الرسالة</label>
+                            <textarea rows="5" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full gold-gradient text-black py-3 rounded-lg font-semibold hover:opacity-90 transition">
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="text-white">
+                    <h3 class="text-2xl font-bold mb-6">معلومات التواصل</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-yellow-400 mb-2">البريد الإلكتروني</h4>
+                            <a href="mailto:info@crystalmediacorp.com" class="text-gray-300 hover:text-yellow-400">
+                                info@crystalmediacorp.com
+                            </a>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-yellow-400 mb-2">الموقع</h4>
+                            <p class="text-gray-300">ريف حلب - عفرين، الشمال السوري</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-yellow-400 mb-4">تابعونا على وسائل التواصل</h4>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="#" class="bg-gray-800 hover:bg-yellow-400 hover:text-black text-yellow-400 p-3 rounded-lg transition">
+                                    <span class="font-bold">Facebook</span>
+                                    <span class="block text-sm">24K متابع</span>
+                                </a>
+                                <a href="#" class="bg-gray-800 hover:bg-yellow-400 hover:text-black text-yellow-400 p-3 rounded-lg transition">
+                                    <span class="font-bold">Instagram</span>
+                                    <span class="block text-sm">18K متابع</span>
+                                </a>
+                                <a href="#" class="bg-gray-800 hover:bg-yellow-400 hover:text-black text-yellow-400 p-3 rounded-lg transition">
+                                    <span class="font-bold">YouTube</span>
+                                    <span class="block text-sm">8K مشترك</span>
+                                </a>
+                                <a href="#" class="bg-gray-800 hover:bg-yellow-400 hover:text-black text-yellow-400 p-3 rounded-lg transition">
+                                    <span class="font-bold">TikTok</span>
+                                    <span class="block text-sm">9K متابع</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZENzAwO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkE1MDA7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxwYXRoIGQ9Ik0yMCA1TDM1IDIwTDIwIDM1TDUgMjB6IiBmaWxsPSJub25lIiBzdHJva2U9IiNDMEMwQzAiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPHBhdGggZD0iTTIwIDEwTDMwIDIwTDIwIDMwTDEwIDIweiIgZmlsbD0idXJsKCNnb2xkR3JhZCkiLz4KICAgIDxwYXRoIGQ9Ik0xNCA1bC0xIDRoMTRsLTEtNGwtMiAxLjUtMi0xLjUtMiAxLjUtMi0xLjUtMiAxLjUtMi0xLjV6IiBmaWxsPSJ1cmwoI2dvbGRHcmFkKSIvPgogICAgPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iNCIgZmlsbD0iIzJBMkEyQSIvPgogICAgPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMi41IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkQ3MDAiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3N2Zz4=" alt="Crystal Media" class="h-10 w-10 ml-2">
+                    <span class="text-lg font-bold">مؤسسة كريستال الإعلامية</span>
+                </div>
+                <p class="text-gray-400">© 2025 جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const themeBtn = document.querySelector('button[onclick="toggleTheme()"]');
+            themeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+
+        // Language toggle (placeholder)
+        function toggleLanguage() {
+            alert('English version coming soon!');
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
 </html>
