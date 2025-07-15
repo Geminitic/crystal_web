@@ -67,3 +67,31 @@ export default tseslint.config([
   },
 ])
 ```
+## Getting Started
+
+### Prerequisites
+- Node.js 18 or later
+- npm
+
+### Install dependencies
+```bash
+npm install
+```
+
+### Development
+Start a hot-reloading dev server:
+```bash
+npm run dev
+```
+
+### Production build
+Create optimized static files:
+```bash
+npm run build
+```
+
+Preview the production build with:
+```bash
+npm run preview
+```
+
