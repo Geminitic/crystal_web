@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
-            <img src="/logo-white.svg" alt="Crystal Media" className="h-12 mb-4" />
+            <img src="/icon.png" alt="Crystal Media" className="h-12 mb-4" />
             <p className="text-gray-400 mb-4">{t('footer.description')}</p>
             <a href="mailto:info@crystalmediacorp.com" className="flex items-center space-x-2 rtl:space-x-reverse text-primary-yellow hover:text-yellow-400">
               <FiMail />
