@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "welcome": "Welcome to Crystal Media Foundation",
+    "subtitle": "An Independent Community Media Platform",
+    "learnMore": "Learn More"
+  },
+  "about": {
+    "title": "About the Foundation",
+    "description": "Independent media initiatives in Syria."
+  },
+  "footer": {
+    "description": "Independent community media platform.",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
+    "copyright": "Crystal Media Foundation"
+  }
+}
