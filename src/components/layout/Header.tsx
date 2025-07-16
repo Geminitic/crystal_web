@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
-            <img src="/logo.svg" alt="Crystal Media" className="h-10 w-auto" />
+            <img src="/icon.png" alt="Crystal Media" className="h-10 w-auto" />
           </Link>
           <Navigation />
           <div className="flex items-center space-x-4 rtl:space-x-reverse">
